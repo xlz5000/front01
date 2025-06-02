@@ -14,7 +14,7 @@ export const api = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
-  withCredentials: true, //CORS 허용
+  withCredentials: true, // CORS 허용
 });
 
 // 인터셉터
