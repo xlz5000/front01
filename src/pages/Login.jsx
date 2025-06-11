@@ -60,7 +60,7 @@ export default function Login() {
         type="password"
         value={m_pw}
         onChange={(e) => setM_pw(e.target.value)}
-        placeholder="패스워드 입력하세요"
+        placeholder="패스워드 입력하세요" 
       />
 
       <button onClick={handleLogin} disabled={!m_id || !m_pw}>

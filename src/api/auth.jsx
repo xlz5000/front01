@@ -14,6 +14,25 @@ export const register = (member) => api.post("/members/register", member);
 
 export const myPage = () => api.get("/members/mypage");
 
+export const guestBookList = () => api.get("/guestbook/guestbooklist");
+
+export const searchguestbook = (gb_idx) =>
+  api.get("/guestbook/searchguestbook", {
+    params: { gb_idx },
+  });
+
+// guestbook 삽입
+export const insertGuestBook = (guestbook) =>
+  api.post("/guestbook/insertguestbook", guestbook);
+
+export const deleteGuestBook = (gb_idx) =>
+  api.get("/guestbook/deleteguestbook", {
+    params: { gb_idx },
+  });
+
+export const updateGuestBookOk = (gb_idx, formData) =>
+  api.post(`/guestbook/updateguestbookok/${gb_idx}`, formData); // URL에 gb_idx 포함
+
 // 인터셉터
 // 1.모든 요청을 가로챔
 // - 요청이 발생하면 인터셉터에서 config 객체를 확인한다.

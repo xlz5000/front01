@@ -11,6 +11,10 @@ import { AuthProvider } from "./context/AuthContext";
 import useAuthStore from "./store/authStore";
 import { useEffect } from "react";
 import OAuth2RedirectHandler from "./components/OAuth2RedirectHandler";
+import GuestBookList from "./pages/GuestBookList";
+import SearchGuestBook from "./pages/SearchGuestBook";
+import InsertGuestBook from "./pages/InsertGuestBook";
+import UpdateGuestBook from "./pages/UpdateGuestBook";
 
 function App() {
   useEffect(() => {
@@ -31,6 +35,16 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/mypage" element={<MyPage />} />
+              <Route path="/guestbooklist" element={<GuestBookList />} />
+              <Route path="/insertguestbook" element={<InsertGuestBook />} />
+              <Route
+                path="/searchguestbook/:gb_idx"
+                element={<SearchGuestBook />}
+              />
+              <Route
+                path="/updateguestbook/:gb_idx"
+                element={<UpdateGuestBook />}
+              />
               <Route path="/productdetail/:id" element={<ProductDetail />} />
               <Route
                 path="/oauth2/redirect"

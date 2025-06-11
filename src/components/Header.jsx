@@ -21,6 +21,17 @@ export default function Header() {
   // 로그아웃 처리
   const handleLogout = () => {
     zu_logout(); // Zustand
+
+    // 로컬스토리지 제거
+    localStorage.removeItem("snsProvider");
+    //localStorage.removeItem("tokens");
+
+    // 쿠키 삭제
+    document.cookie = "snsProvider=; path=/; max-age=0";
+    document.cookie = "authToken=; path=/; max-age=0";
+
+    // 초기화
+    useAuthStore.getState().zu_logout();
     navigate("/");
   };
 
@@ -35,7 +46,7 @@ export default function Header() {
         </div>
         {/* 가운데 : 방명록, 게시판, 고객센터 */}
         <div className="header-center">
-          <Link to="/guestbook"> 방명록 </Link>
+          <Link to="/guestbooklist"> 방명록 </Link>
           <Link to="/bbs"> 게시판 </Link>
           <Link to="/support"> 고객센터 </Link>
         </div>
@@ -57,4 +68,3 @@ export default function Header() {
     </header>
   );
 }
-

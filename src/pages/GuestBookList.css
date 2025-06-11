@@ -1,0 +1,37 @@
+.guestbook-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.guestbook-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #fafafa;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+}
+
+.guestbook-card:hover {
+  transform: scale(1.02);
+  background-color: #f0f8ff;
+}
+
+.guestbook-link {
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+  color: #2a4d9b;
+}
+
+.guestbook-link:hover {
+  text-decoration: underline;
+}
+
+.guestbook-meta {
+  margin-top: 8px;
+  color: #555;
+  font-size: 14px;
+}
