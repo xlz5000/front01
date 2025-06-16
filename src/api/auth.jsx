@@ -22,8 +22,8 @@ export const searchguestbook = (gb_idx) =>
   });
 
 // guestbook 삽입
-export const insertGuestBook = (guestbook) =>
-  api.post("/guestbook/insertguestbook", guestbook);
+export const insertGuestBook = (formData) =>
+  api.post("/guestbook/insertguestbook", formData);
 
 export const deleteGuestBook = (gb_idx) =>
   api.get("/guestbook/deleteguestbook", {

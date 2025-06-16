@@ -8,6 +8,8 @@ export default function InsertGuestBook() {
   const [member, setMember] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
+  const [file, setFile] = useState(null);
+
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
@@ -56,18 +58,32 @@ export default function InsertGuestBook() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
   const handleSignup = async () => {
     try {
-      // Axios로 SpringBoot 서버에 POST로 요청
-      console.log("전송할 데이터:", form);
+      const formData = new FormData();
+      formData.append("gb_name", form.gb_name);
+      formData.append("gb_email", form.gb_email);
+      formData.append("gb_pw", form.gb_pw);
+      formData.append("gb_content", form.gb_content);
+      formData.append("gb_subject", form.gb_subject);
+      if (file) {
+        formData.append("file", file);
+      }
 
-      const response = await insertGuestBook(form);
+      console.log("전송할 데이터 (FormData):", [...formData.entries()]);
+
+      const response = await insertGuestBook(formData); // FormData 넘김
       console.log("응답 전체:", response.data);
+
       if (response.data.success) {
         alert("방명록 작성 성공");
         navigate("/guestbooklist");
       } else {
-        alert("작성 실패: " + response.data.message); // 실패 이유도 함께 표시
+        alert("작성 실패: " + response.data.message);
       }
     } catch (error) {
       console.error(error);
@@ -99,7 +115,7 @@ export default function InsertGuestBook() {
         value={form.gb_pw}
         onChange={handleChange}
       />
-
+      <input type="file" onChange={handleFileChange} />
       <button onClick={handleSignup}>작성하기</button>
     </div>
   );
